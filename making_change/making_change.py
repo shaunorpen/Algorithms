@@ -2,8 +2,17 @@
 
 import sys
 
-def making_change(amount, denominations):
-  pass 
+def making_change(amount, coins, currentCoin = 0):
+  if amount == 0:
+    return 1
+  if amount < 0:
+    return 0
+  nCombos = 0
+  for coin in range(currentCoin, len(coins)):
+    nCombos += making_change(amount - coins[coin], coins, coin)
+  return nCombos
+
+print(making_change(20, [1, 5, 10, 25, 50]))  
 
 
 if __name__ == "__main__":
