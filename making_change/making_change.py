@@ -22,16 +22,12 @@ import sys
 
 #   return cache[amount]
 
-def helper(amount, denominations):
+def making_change(amount, denominations):
   if amount < 0 or denominations == []:
     return 0
   if amount == 0:
     return 1
-  return helper(amount - denominations[0], denominations) + helper(amount, denominations[1:])
-
-def making_change(amount, denominations):
-  denominations.sort(reverse=True)
-  return helper(amount, denominations) 
+  return making_change(amount - denominations[-1], denominations) + making_change(amount, denominations[:-1])
 
 if __name__ == "__main__":
   # Test our your implementation from the command line
