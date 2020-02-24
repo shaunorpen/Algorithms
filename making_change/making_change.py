@@ -12,6 +12,19 @@ import sys
 #     nCombos += making_change(amount - coins[coin], coins, coin)
 #   return nCombos
 
+# def making_change(amount, coins, currentCoin = 0, cache = {}):
+#   if amount == 0:
+#     return 1
+#   if amount < 0:
+#     return 0
+#   if (amount, len(coins), currentCoin) in cache:
+#     return cache[(amount, len(coins), currentCoin)]
+#   nCombos = 0
+#   for coin in range(currentCoin, len(coins)):
+#     nCombos += making_change(amount - coins[coin], coins, coin, cache)
+#   cache[(amount, len(coins), currentCoin)] = nCombos
+#   return cache[(amount, len(coins), currentCoin)]
+
 # def making_change(amount, denominations):
 #   cache = {key: 0 for key in range(amount + 1)}
 #   cache[0] = 1
