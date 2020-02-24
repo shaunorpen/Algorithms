@@ -22,12 +22,26 @@ import sys
 
 #   return cache[amount]
 
-def making_change(amount, denominations):
+# def making_change(amount, denominations):
+#   if amount < 0 or denominations == []:
+#     return 0
+#   if amount == 0:
+#     return 1
+#   return making_change(amount - denominations[-1], denominations) + making_change(amount, denominations[:-1])
+
+def making_change(amount, denominations, cache = {}):
   if amount < 0 or denominations == []:
     return 0
   if amount == 0:
     return 1
-  return making_change(amount - denominations[-1], denominations) + making_change(amount, denominations[:-1])
+  if (amount, len(denominations)) in cache:
+    return cache[amount, len(denominations)]
+  else:
+    cache[amount, len(denominations)] = (
+        making_change(amount - denominations[-1], denominations) 
+        + making_change(amount, denominations[:-1])
+      )
+    return cache[amount, len(denominations)]
 
 if __name__ == "__main__":
   # Test our your implementation from the command line
