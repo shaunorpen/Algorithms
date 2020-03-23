@@ -2,9 +2,21 @@
 
 import math
 
-def recipe_batches(recipe, ingredients):
-  pass 
-
+def recipe_batches(recipe, store_cupboard):
+  # Create a variable to store the number of whole batches
+  whole_batches = 0
+  while True:
+    # For each ingredient the recipe requires
+    for ingredient in list(recipe.keys()):
+      # Check it's in the store cupboard and that we have enough of it
+      if ingredient in store_cupboard and store_cupboard[ingredient] >= recipe[ingredient]:
+        # And if we do, take it out the store cupboard
+        store_cupboard[ingredient] -= recipe[ingredient]
+      else:
+        # Until we find something we don't have or don't have enough of
+        return whole_batches
+    # Update whole batches by one and loop again
+    whole_batches += 1
 
 if __name__ == '__main__':
   # Change the entries of these dictionaries to test 
